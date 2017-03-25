@@ -121,11 +121,16 @@ class AltContainer extends React.Component {
 
   static childContextTypes = {
     flux: React.PropTypes.object,
+    store: React.PropTypes.any,
+    stores: React.PropTypes.any,
   }
 
   getChildContext() {
-    var flux = this.props.flux || this.context.flux
-    return flux ? { flux: flux } : {}
+    return {
+      flux: this.props.flux || this.context.flux,
+      store: this.props.store,
+      stores: this.props.stores,
+    };
   }
 
   constructor(props) {
